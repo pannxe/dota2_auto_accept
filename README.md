@@ -37,6 +37,12 @@ Numpy
 pip install numpy
 ```
 
+Pyyaml
+
+```bash
+pip install pyyaml
+```
+
 ## Author
 
 **pannxe** - original work - [Github](https://github.com/pannxe)
