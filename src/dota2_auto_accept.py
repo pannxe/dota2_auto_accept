@@ -1,42 +1,44 @@
 import pyautogui as pag
 import time
-
-CHECK_INTERVAL = 1
-
-CLICK_INTERVAL = 0.3
-NUM_OF_CLICKS = 5
-
-CONFIDENCE = 0.7
-GRAYSCALE = True
+import yaml
 
 def main():
-    print("Dota 2 Auto Accept 1.0.0\nWritten by pannxe.\n")
+    print("Dota 2 Auto Accept\nWritten by pannxe.\n")
+    print("Reading config file...")
+    with open("config.yaml", "r") as stream:
+        try :
+            config = yaml.safe_load(stream)
+        except:
+            pag.alert("Error! Cannot load config.yaml")
+            exit()
 
-    found = False
     print("Looking for accept-button-like object(s)...")
+    found = False
     while True:
         coors = pag.locateCenterOnScreen(
-            "img/accept-en.png", grayscale=GRAYSCALE, confidence=CONFIDENCE
+            config["PATH_TO_IMG"], grayscale=config["GRAYSCALE"], confidence=config["CONFIDENCE"]
         )
         if coors == None:
-            if found :
+            if found:
                 pag.alert("Auto-accepted :D\nClick OK to continue.")
                 print("Continue looking for accept-button-like object(s)...")
                 found = False
-            time.sleep(CHECK_INTERVAL)
+            time.sleep(config["CHECK_INTERVAL"])
         else:
-            if found :
+            if found:
                 print("Accept-button-like object does not seem to disappear.")
             found = True
-            print("Found an accept-button-like object at\t{},\t{}".format(coors.x, coors.y))
+            print(
+                "Found an accept-button-like object at\t{},\t{}".format(coors.x, coors.y))
             pag.click(
                 x=coors.x,
                 y=coors.y,
-                interval=CHECK_INTERVAL,
-                clicks=NUM_OF_CLICKS,
+                interval=config["CHECK_INTERVAL"],
+                clicks=config["NUM_OF_CLICKS"],
                 button="left",
             )
             print("\t--> clicked.")
+        
 
 if __name__ == "__main__":
     main()
