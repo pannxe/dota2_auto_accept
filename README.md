@@ -4,7 +4,12 @@ This script will help you poop without worry!
 
 ## Installation
 
-go to install folder if you are on Windows run ```install.bat``` if you are on Linux (Arch-based) run '''install.bash'''
+Run ```install.py``` or go to install folder if you are on Windows run ```install.bat``` if you are on Linux (Arch-based) run ```install.bash```
+
+## Run
+
+Windows ```run.bat```
+Linux ```run.bash```
 
 ## Config
 
