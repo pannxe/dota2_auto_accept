@@ -10,6 +10,13 @@ go to install folder if you are on Windows run ```install.bat``` if you are on L
 
 Because everyone has different screen size. I recommend that you take the screenshot of your own, crop the accept button, and replace accept-en.png.
 
+**CHECK_INTERVAL** - time (secs) between each search.
+**CLICK_INTERVAL**  - time (secs) between each click.
+**NUM_OF_CLICKS** - number of clicking times.
+**CONFIDENCE** - (0-1) higher = more pixel-perfect.
+**GRAYSCALE** - (True/False) changing not recommended.
+**PATH_TO_IMG** - path to image file.
+
 ## Dependencies
 
 PyAutoGUI
